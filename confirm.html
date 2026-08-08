@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <main class="success-screen">
+
+        <div class="success-icon-wrap">
+            <span class="checkmark-icon">✓</span>
+        </div>
+
+        <h2>Order Placed Successfully! 🎉</h2>
+
+        <div class="ticket-box">
+            <p class="ticket-label">Your Order ID</p>
+            <h3 id="orderId">#C000</h3>
+        </div>
+
+        <div class="order-receipt-summary">
+            <h4>Registration Details</h4>
+
+            <div style="font-size:14px; color:#2d3748; line-height:1.6;">
+
+                <strong>Student: </strong>
+                <span id="student">Loading...</span>
+
+                <br>
+
+                <strong>Reg No: </strong>
+                <span id="reg">Loading...</span>
+
+            </div>
+        </div>
+
+        <div class="pickup-eta-card">
+
+            <p style="margin:0; color:#718096; font-size:13px;">
+                Estimated Pickup Time
+            </p>
+
+            <h4 id="pickup">
+                🕒 Calculating...
+            </h4>
+
+            <p class="counter-instruction">
+                Please collect your order from
+                <strong>Counter 1</strong>
+            </p>
+
+        </div>
+        <button
+    id="gotFoodBtn"
+    class="primary-action-btn"
+    style="margin-top:15px;">
+    ✅ I Got My Food
+</button>
+
+        <button
+            onclick="goHome()"
+            class="primary-action-btn home-return-btn"
+            style="margin-top:10px;">
+
+            Go To Home
+
+        </button>
+
+    </main>
+
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>

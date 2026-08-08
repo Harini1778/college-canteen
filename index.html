@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue-Free Canteen Ordering System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========================================================
+         PAGE 1: HOME PAGE VIEW
+         ======================================================== -->
+    <div id="homePage" class="container">
+        <header class="app-header">
+            <h1>College Canteen</h1>
+        </header>
+
+        <main class="main-content">
+            <div class="welcome-box">
+                <h2>Welcome! 😊</h2>
+                <p>Skip the queue: Order in advance & collect on time.</p>
+            </div>
+            
+            <button id="orderBtn" class="primary-action-btn" onclick="orderFood()">Order Food</button>
+
+            <div class="timing-card">
+                <h3>🕒 Today's Timings</h3>
+                <div class="time-row"><span>Breakfast</span> <strong>07:00 AM - 10:00 AM</strong></div>
+                <div class="time-row"><span>Lunch</span> <strong>12:00 PM - 03:00 PM</strong></div>
+                <div class="time-row"><span>Snacks</span> <strong>03:00 PM - 06:00 PM</strong></div>
+                <div class="time-row"><span>Dinner</span> <strong>06:00 PM - 09:00 PM</strong></div>
+            </div>
+
+            <div class="bestsellers-box">
+                <h3>⭐ Our Bestsellers</h3>
+                <p>Dosa • Sandwich • Vada</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================================
+         PAGE 2: MENU PAGE VIEW
+         ======================================================== -->
+    <div id="menuPage" class="container" style="display: none;">
+        <header class="app-header nav-header">
+            <button class="back-btn">⬅</button>
+            <h1>Breakfast</h1>
+        </header>
+
+        <div class="category-tabs">
+            <button class="tab-btn active">Breakfast</button>
+            <button class="tab-btn">Lunch</button>
+            <button class="tab-btn">Snacks</button>
+            <button class="tab-btn">Dinner</button>
+        </div>
+
+        <main id="menuItemsList" class="items-list-wrapper">
+            <!-- Dynamic menu elements inside this structural tree will match styling -->
+            <div class="cart-item">
+                <div class="cart-item-details">
+                    <img src="https://unsplash.com" alt="Idli">
+                    <div class="cart-item-info">
+                        <h3>Idli (2 pcs)</h3>
+                        <p>₹20</p>
+                    </div>
+                </div>
+                <div class="cart-qty-control">
+                    <button class="minus-btn">-</button>
+                    <span class="qty-count">0</span>
+                    <button class="plus-btn">+</button>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <div class="cart-item-details">
+                    <img src="https://unsplash.com" alt="Dosa">
+                    <div class="cart-item-info">
+                        <h3>Dosa</h3>
+                        <p>₹30</p>
+                    </div>
+                </div>
+                <div class="cart-qty-control">
+                    <button class="minus-btn">-</button>
+                    <span class="qty-count">0</span>
+                    <button class="plus-btn">+</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="sticky-footer">
+            <button id="viewCartBtn" class="footer-action-btn">View Cart (0) - ₹0</button>
+        </footer>
+    </div>
+
+    <!-- ========================================================
+         PAGE 3: CART & CHECKOUT PAGE VIEW
+         ======================================================== -->
+    <div id="cartPage" class="container" style="display: none;">
+        <header class="app-header nav-header">
+            <button class="back-btn">⬅</button>
+            <h1>Your Cart</h1>
+        </header>
+
+        <main class="cart-content">
+            <div id="cartItems">
+                <!-- Javascript will inject selected items matching this specific structure here -->
+            </div>
+
+            <div class="checkout-summary-card">
+                <div class="summary-row"><span>Total Items</span> <strong id="summaryCount">0</strong></div>
+                <div id="total" class="total-box">
+                    <span>Total Amount</span>
+                    <span id="totalPrice">₹0</span>
+                </div>
+            </div>
+
+            <form id="checkoutForm" class="checkout-form">
+                <div class="form-group">
+                    <label for="userName">Name</label>
+                    <input type="text" id="userName" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="regNumber">Register Number</label>
+                    <input type="text" id="regNumber" required placeholder="e.g., 22CS1234">
+                </div>
+                <button type="submit" class="primary-action-btn place-order-btn">Place Order</button>
+            </form>
+        </main>
+    </div>
+
+    <!-- ========================================================
+         PAGE 4: CONFIRMATION PAGE VIEW
+         ======================================================== -->
+    <div id="confirmationPage" class="container" style="display: none;">
+        <main class="success-screen">
+            <div class="success-icon-wrap">
+                <span class="checkmark-icon">✓</span>
+            </div>
+            
+            <h2>Order Placed Successfully! 🎉</h2>
+            
+            <div class="ticket-box">
+                <p class="ticket-label">Your Order ID</p>
+                <h3 id="orderIdDisplay">#C102</h3>
+            </div>
+
+            <div class="order-receipt-summary">
+                <h4>Order Summary</h4>
+                <div id="receiptItemsList">
+                    <!-- Receipt detail list rows generated dynamically by js -->
+                </div>
+                <div class="receipt-total-row">
+                    <span>Total Amount</span>
+                    <strong id="receiptTotalAmount">₹0</strong>
+                </div>
+            </div>
+
+            <div class="pickup-eta-card">
+                <p>Estimated Pickup Time</p>
+                <h4 id="pickupTimeDisplay">🕒 10:20 AM (10 mins)</h4>
+                <p class="counter-instruction">Please collect your order from <strong>Counter 1</strong></p>
+            </div>
+
+            <button id="goHomeBtn" class="primary-action-btn home-return-btn">Go To Home</button>
+        </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

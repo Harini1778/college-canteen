@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Navigation Header Block matching your mockup framework -->
+        <header class="app-header nav-header">
+            <button class="back-btn" onclick="window.location.href='menu.html'">⬅</button>
+            <h1>Your Cart</h1>
+        </header>
+
+        <!-- Container for horizontal card rows injected by script.js -->
+        <main class="cart-content">
+            <div id="cartItems"></div>
+
+            <!-- Styled checkout total box container -->
+            <div id="total" class="total-box"></div>
+
+            <!-- Input fields and actions organized into a crisp, responsive layout form -->
+            <div class="checkout-form">
+                <div class="form-group">
+                    <label for="studentName">Name</label>
+                    <input type="text" id="studentName" required placeholder="Enter Student Name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="registerNo">Register Number</label>
+                    <input type="text" id="registerNo" required placeholder="Enter Register Number">
+                </div>
+
+                <button onclick="placeOrder()" class="primary-action-btn place-order-btn">Place Order</button>
+                <button onclick="clearCart()" class="primary-action-btn clear-cart-btn" style="background: #f7f9fa; color: #4a5568; margin-top: 0; border: 1px solid #e2e8f0;">Clear Cart</button>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
